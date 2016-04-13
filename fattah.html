@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" np-app>
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<title></title>
+	<style type="text/css">
+                body{background: #ffeca9;}
+                p{
+               color: ##212F11; 
+               font: bold 52px Helvetica, Arial, Sans-Serif;
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907;
+               -webkit-transition: all 0.12s ease-out;
+               -moz-transition:    all 0.12s ease-out;
+               -ms-transition:     all 0.12s ease-out;
+               -o-transition:      all 0.12s ease-out;
+            }
+            p:hover {
+               position: relative; 
+               top: -3px; 
+               left: -3px; 
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907, 
+                            4px 4px ##D6A907, 
+                            5px 5px ##D6A907, 
+                            6px 6px ##D6A907;
+            }
+
+            .btn-block { padding: 0% 0%;}
+            .tc{      font-size:100px;
+                      text-align: center;
+                      }
+    </style>
+	<link rel="stylesheet" type="text/css" href="./node_modules/ng-audio/dist/css/ng-audio.min.css">
+</head>
+<body>
+<div class="container-fluid">
+<div ng-app='myApp' ng-controller="myCtrl">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in letters">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index)"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+<script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.letters=	['اَ','بَ','تَ','ثَ','جَ','حَ','خَ','دَ','ذَ','رَ','زَ','سَ','شَ','صَ','ضَ','طَ','ظَ','عَ','غَ','فَ','قَ','كَ','لَ','مَ','نَ','وَ','هَ','ءَ','يَ'];
+    $scope.columnBreak = 4; //Max number of colunms
+    $scope.awaaz = function(taskId){
+    alert("Task Id is "+taskId);
+     if(taskId==0){
+         var filename='./arabicLetters/'+taskId.toString()+'.mp3';
+         var audio = new Audio(filename);audio.play();
+     }
+        
+ }
+});
+</script>
+
+</body>
+</html>

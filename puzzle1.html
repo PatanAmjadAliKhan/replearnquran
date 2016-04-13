@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+
+
+	<title></title>
+    <style type="text/css">
+                body{background: #ffeca9;}
+                p{
+               color: ##212F11; 
+               font: bold 52px Helvetica, Arial, Sans-Serif;
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907;
+               -webkit-transition: all 0.12s ease-out;
+               -moz-transition:    all 0.12s ease-out;
+               -ms-transition:     all 0.12s ease-out;
+               -o-transition:      all 0.12s ease-out;
+            }
+            p:hover {
+               position: relative; 
+               top: -3px; 
+               left: -3px; 
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907, 
+                            4px 4px ##D6A907, 
+                            5px 5px ##D6A907, 
+                            6px 6px ##D6A907;
+            }
+
+            .btn-block { padding: 0% 0%;}
+            .tc{      font-size:100px;
+                     
+                      }
+	  </style>
+    <style>
+    /* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+    </style>
+</head>
+<body ng-app='myApp'>
+    <div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Menu Item 1</a></li>
+            <li><a href="#">Menu Item 2</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu Item 4</a></li>
+            <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+    Main content goes here
+  </div>
+</div>
+    <div ng-controller="letterCtrl">
+    </div>
+
+    <div id="box1" ng-controller="TestCtrl" ng-modal="tuple">
+        
+    <button onclick="call()"id="btn_click">Call Controller's method from outside</button>
+
+        <div class="row" >
+             <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <div class="col-xs-3">
+                <button id="letter1"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[0]}}</p></button>
+                </div>
+                <div class="col-xs-3">
+                <button id="letter2"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[1]}}</p></button>
+                </div>
+                <div class="col-xs-3">
+                <button id="letter3"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[2]}}</p></button>
+                <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+   
+
+var app = angular.module('myApp', []);
+app.controller('letterCtrl', function($scope,$rootScope) {
+	$rootScope.letters=[
+['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','و','ه','ء','ي'],
+
+['أَ','بَ','تَ','ثَ','جَ','حَ','خَ','دَ','ذَ','رَ','زَ','سَ','شَ','صَ','ضَ','طَ','ظَ','عَ','غَ','فَ','قَ','كَ','لَ','مَ','نَ','وَ','هَ','ءَ','يَ'],
+
+['إِ','بِ','تِ','ثِ','جِ','حِ','خِ','دِ','ذِ','رِ','زِ','سِ','شِ','صِ','ضِ','طِ','ظِ','عِ','غِ','فِ','قِ','كِ','لِ','مِ','نِ','وِ','هِ','ءِ','يِ'],
+
+['أُ','بُ','تُ','ثُ','جُ','حُ','خُ','دُ','ذُ','رُ','زُ','سُ','شُ','صُ','ضُ','طُ','ظُ','عُ','غُ','فُ','قُ','كُ','لُ','مُ','نُ','وُ','هُ','ءُ','يُ'],
+  
+['اً','بً','تً','ثً','جً','حً','خً','دً','ذً','رً','زً','سً','شً','صً','ضً','طً','ظً','عً','غً','فً','قً','كً','لً','مً','نً','وً','هً','ءً','أً'],
+
+['إٍ','بٍ','تٍ','ثٍ','جٍ','حٍ','خٍ','دٍ','ذٍ','رٍ','زٍ','سٍ','شٍ','صٍ','ضٍ','طٍ','ظٍ','عٍ','غٍ','فٍ','قٍ','كٍ','لٍ','مٍ','نٍ','وٍ','هٍ','ءٍ','يٍ'],
+
+['أٌ','بٌ','تٌ','ثٌ','جٌ','حٌ','خٌ','دٌ','ذٌ','رٌ','زٌ','سٌ','شٌ','صٌ','ضٌ','طٌ','ظٌ','عٌ','غٌ','فٌ','قٌ','كٌ','لٌ','مٌ','نٌ','وٌ','هٌ','ءٌ','يٌ']
+];
+ 
+
+   $scope.letters=$rootScope.letters;
+    
+    $scope.columnBreak = 4; //Max number of colunms
+    $scope.awaaz = function(taskId){
+    alert("Task Id is "+taskId);
+     if(taskId==0){
+         var filename='./arabicLetters/'+taskId.toString()+'.mp3';
+         var audio = new Audio(filename);audio.play();
+     }
+    }
+    });
+    
+
+app.controller('TestCtrl', function($scope,$rootScope) {
+   $scope.letters=$rootScope.letters;
+    $scope.returntuple= function() {
+        var tuple=[];
+   for (var z=0;z<3;z++){
+    //var j= Math.floor((Math.random() * 1) );
+    var k= Math.floor((Math.random() * 2) );
+    tuple.push($scope.letters[1][k]);
+   }
+        $scope.tuple = tuple;
+    }
+    $scope.$watch('$scope.tuple', function() {
+   $scope.tuple = tuple;
+  });
+   // $scope.$digest();
+});
+function call() {
+    var $scope =angular.element(document.getElementById('box1')).scope();
+    if (!$scope.$$phase) {
+        $scope.$apply()
+    }
+   $scope.returntuple();
+    $scope.$digest();
+
+} 
+
+	 
+ 			   
+/*var i=0;
+while(i<10000){
+   var j= Math.floor((Math.random() * 5) );
+   var k= Math.floor((Math.random() * 27) );
+    document.write(letters[j][k]);
+i++;
+}*/
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+function randomSimple(){
+  return [0,0,0,0,0,0,0,0,1,2][Math.floor(Math.random()*10)];
+}
+
+function randomCase(){
+  var n=Math.floor(Math.random()*100)
+  switch(n){
+    case n<80:
+      return 0;
+    case n<90:
+      return 1;
+    case n<100:
+      return 2;
+  }
+}
+
+function randomLoop(weight,num){
+  var n=Math.floor(Math.random()*100),amt=0;
+  for(var i=0;i<weight.length;i++){
+    //amt+=weight[i]; *alternative method
+    //if(n<amt){
+    if(n<weight[i]){
+      return num[i];
+    }
+  }
+}
+
+weight=[80,90,100];
+//weight=[80,10,10]; *alternative method
+num=[0,1,2]

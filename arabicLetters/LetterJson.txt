@@ -1,0 +1,32 @@
+Huruf=[{
+charecter:'a',
+enTransliteration:'a',
+how2write:'a_write.img',
+isolated:'A',
+initail:'',
+medial:'',
+final:'',
+Ignoreinsomeplaces:'true:when join with Laam',
+sound:'a_sound.mp3',
+soundInstructions:'AaLif',
+Gunna:false,
+video:'a_vedio.mp3',
+examplewords:[{thing:name,image:'name.img',vedio:''}'','',''],
+
+},
+{
+charecter:'b',
+enTransliteration:'baa',
+how2write:'b_write.img',
+firstLetter:'',
+middleLetter:'',
+lastLetter:'',
+Ignoreinsomeplaces:'true:when join with Laam',
+sound:'b_sound.mp3',
+soundInstructions:'baa',
+Gunna:false,
+video:'b_vedio.mp3',
+
+
+
+}

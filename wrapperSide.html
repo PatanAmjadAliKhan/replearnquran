@@ -1,0 +1,130 @@
+
+ <!DOCTYPE html>
+<html lang="ar" np-app>
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<title></title>
+	<style type="text/css">
+                body{background: #ffeca9;}
+                p{
+               color: ##212F11; 
+               font: bold 52px Helvetica, Arial, Sans-Serif;
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907;
+               -webkit-transition: all 0.12s ease-out;
+               -moz-transition:    all 0.12s ease-out;
+               -ms-transition:     all 0.12s ease-out;
+               -o-transition:      all 0.12s ease-out;
+            }
+            p:hover {
+               position: relative; 
+               top: -3px; 
+               left: -3px; 
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907, 
+                            4px 4px ##D6A907, 
+                            5px 5px ##D6A907, 
+                            6px 6px ##D6A907;
+            }
+
+            .btn-block { padding: 0% 0%;}
+            .tc{      font-size:100px;
+                      text-align: center;
+                      }
+	  </style>
+    <style>
+
+<link rel="stylesheet" type="text/css" href="./node_modules/ng-audio/dist/css/ng-audio.min.css">
+    
+
+</head>
+<body ng-app='myApp'>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+  <div class="container">
+    <div class="row">
+      <nav class="col-sm-3" id="myScrollspy">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="harf.html">Section 1</a></li>
+          ...
+        </ul>
+      </nav>
+      <div class="col-sm-9">
+        <div id="section1"> 
+          <h1>Section 1</h1>
+          <p>Try to scroll this page and look at the navigation list while scrolling!</p>
+        </div> 
+        ...
+      </div>
+    </div>
+  </div>
+
+</body>
+    <script>
+var app = angular.module('myApp', []);
+     app.controller('TabController', function ($scope,$rootScope) {
+        
+$rootScope.letters=
+['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','و','ه','ء','ي'];
+$rootScope.fattah=
+['اَ','بَ','تَ','ثَ','جَ','حَ','خَ','دَ','ذَ','رَ','زَ','سَ','شَ','صَ','ضَ','طَ','ظَ','عَ','غَ','فَ','قَ','كَ','لَ','مَ','نَ','وَ','هَ','ءَ','يَ'];
+$rootScope.kasra=
+['اِ','بِ','تِ','ثِ','جِ','حِ','خِ','دِ','ذِ','رِ','زِ','سِ','شِ','صِ','ضِ','طِ','ظِ','عِ','غِ','فِ','قِ','كِ','لِ','مِ','نِ','وِ','هِ','ءِ','يِ'];
+$rootScope.damma=
+['اُ','بُ','تُ','ثُ','جُ','حُ','خُ','دُ','ذُ','رُ','زُ','سُ','شُ','صُ','ضُ','طُ','ظُ','عُ','غُ','فُ','قُ','كُ','لُ','مُ','نُ','وُ','هُ','ءُ','يُ'];
+$rootScope.fattatain=   
+['اً','بً','تً','ثً','جً','حً','خً','دً','ذً','رً','زً','سً','شً','صً','ضً','طً','ظً','عً','غً','فً','قً','كً','لً','مً','نً','وً','هً','ءً','يً'];
+$rootScope.kasratain=
+['اٍ','بٍ','تٍ','ثٍ','جٍ','حٍ','خٍ','دٍ','ذٍ','رٍ','زٍ','سٍ','شٍ','صٍ','ضٍ','طٍ','ظٍ','عٍ','غٍ','فٍ','قٍ','كٍ','لٍ','مٍ','نٍ','وٍ','هٍ','ءٍ','يٍ'];
+$rootScope.dammatain=
+['اٌ','بٌ','تٌ','ثٌ','جٌ','حٌ','خٌ','دٌ','ذٌ','رٌ','زٌ','سٌ','شٌ','صٌ','ضٌ','طٌ','ظٌ','عٌ','غٌ','فٌ','قٌ','كٌ','لٌ','مٌ','نٌ','وٌ','هٌ','ءٌ','يٌ'];
+     });
+       
+
+</script>
+<script>
+    function colorchange(){
+        var color=document.getElementById('color').value;
+        document.body.style.backgroundColor=color;
+    }
+    function buttoncolorchange(){   
+    var color=document.getElementById('color1').value;
+    elements = document.getElementsByTagName('p');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor=color;
+        console.log(elements[i])
+    }
+    }
+</script> 
+    <script>
+    $(function () {
+    $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+    $('.tree li.parent_li > span').on('click', function (e) {
+        var children = $(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(":visible")) {
+            children.hide('fast');
+            $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+        } else {
+            children.show('fast');
+            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+        }
+        e.stopPropagation();
+    });
+});
+    </script>
+</body>
+</html>                         

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title></title>
+
+</head>
+<body>
+<div ng-app="AudioTest">
+    <div ng-controller="AudioTestCtrl">
+        <div ng-repeat="audio in event.audios">
+            <audio ng-src="/data/media/ | trustedAudioUrl:audio)" controls></audio>
+        </div>
+    </div>
+</div>
+<script src="./bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+
+<script type="text/javascript" >
+	angular.module('AudioTest', [])
+.filter('trustedAudioUrl', function($sce) {
+    return function(path, audioFile) {
+        return $sce.trustAsResourceUrl(path + audioFile);
+    };
+})
+.controller('AudioTestCtrl', function($scope) {
+    $scope.event = { 'audios': ['./arabicletters/click.mp3', './arabicletters/click.mp3']};
+});
+</script>
+</body>
+</html>

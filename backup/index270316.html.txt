@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" np-app>
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<title></title>
+	<style type="text/css">
+                body{background: #ffeca9;}
+                p{
+               color: ##212F11; 
+               font: bold 52px Helvetica, Arial, Sans-Serif;
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907;
+               -webkit-transition: all 0.12s ease-out;
+               -moz-transition:    all 0.12s ease-out;
+               -ms-transition:     all 0.12s ease-out;
+               -o-transition:      all 0.12s ease-out;
+            }
+            p:hover {
+               position: relative; 
+               top: -3px; 
+               left: -3px; 
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907, 
+                            4px 4px ##D6A907, 
+                            5px 5px ##D6A907, 
+                            6px 6px ##D6A907;
+            }
+
+            .btn-block { padding: 0% 0%;}
+            .tc{      font-size:100px;
+                      text-align: center;
+                      }
+	  </style>
+	<link rel="stylesheet" type="text/css" href="./node_modules/ng-audio/dist/css/ng-audio.min.css">
+</head>
+<body ng-app='myApp'>
+
+
+
+<div class="container">
+    <section  ng-controller="TabController as tab">
+        <ul class="nav nav-pills">
+            <li ng-class="{active:tab.isSet(1)}"><a href ng-click="tab.setTab(1)">Harf</a></li>
+            <li ng-class="{active:tab.isSet(2)}"><a href ng-click="tab.setTab(2)">Fetha</a></li>
+            <li ng-class="{active:tab.isSet(3)}"><a href ng-click="tab.setTab(3)">kesra</a></li>
+            <li ng-class="{active:tab.isSet(4)}"><a href ng-click="tab.setTab(4)">Damma</a></li>
+            <li ng-class="{active:tab.isSet(5)}"><a href ng-click="tab.setTab(5)">Fattatain</a></li>
+            <li ng-class="{active:tab.isSet(6)}"><a href ng-click="tab.setTab(6)">kesratain</a></li>
+            <li ng-class="{active:tab.isSet(7)}"><a href ng-click="tab.setTab(7)">Dammatain</a></li>
+        </ul>
+        <div ng-show="tab.isSet(1)">
+    <div class="container" ng-controller="letterCtrl">
+    <div class="row" >
+        <div id="{{$index}}" ng-repeat="item in letters">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div ng-show="tab.isSet(2)">
+ <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in fattah">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+ </div>
+        </div>
+        <div ng-show="tab.isSet(3)">
+            <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in kasra">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        <div ng-show="tab.isSet(4)">
+            <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in damma">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        <div ng-show="tab.isSet(5)">
+            <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in fattatain">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        <div ng-show="tab.isSet(6)">
+            <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in kasratain">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        <div ng-show="tab.isSet(7)">
+            <div class="container">
+    <div class="row">
+        <div id="{{$index}}" ng-repeat="item in dammatain">
+            <div class="col-xs-3 col-md-3 pull-right">
+                <button id="{{$index}}"type="button" class="btn btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{item}}</p></button>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        
+    </section>
+</div>
+<input type="color" id="color">
+<input type="button" value="background color"onclick="colorchange()" >
+<input type="color" id="color1">
+<input type="button" value="Letters color"onclick="buttoncolorchange()" >
+<script>
+
+var app = angular.module('myApp', []);
+     app.controller('TabController', function ($scope,$rootScope) {
+        this.tab = 1;
+$rootScope.letters=
+['?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'];
+$rootScope.fattah=
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+$rootScope.kasra=
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+$rootScope.damma=
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+$rootScope.fattatain=   
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+$rootScope.kasratain=
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+$rootScope.dammatain=
+['??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??','??'];
+ 
+        this.setTab = function (tabId) {
+            this.tab = tabId;
+      };
+        this.isSet = function (tabId) {
+        
+            return this.tab === tabId;
+        }
+    });
+app.controller('letterCtrl', function($scope,$rootScope) {
+   $scope.letters=$rootScope.letters;
+    $scope.fattah=$rootScope.fattah;
+    $scope.damma=$rootScope.damma;
+    $scope.fattatain= $rootScope.fattatain;
+    $scope.kasratain=$rootScope.kasratain;
+    $scope.dammatain= $rootScope.dammatain;   
+    $scope.columnBreak = 4; //Max number of colunms
+    $scope.awaaz = function(taskId){
+    alert("Task Id is "+taskId);
+     if(taskId==0){
+         var filename='./arabicLetters/'+taskId.toString()+'.mp3';
+         var audio = new Audio(filename);audio.play();
+     }
+    }
+    });
+</script>
+<script>
+    function colorchange(){
+        var color=document.getElementById('color').value;
+        document.body.style.backgroundColor=color;
+    }
+    function buttoncolorchange(){   
+    var color=document.getElementById('color1').value;
+    elements = document.getElementsByTagName('p');
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.backgroundColor=color;
+        console.log(elements[i])
+    }
+    }
+</script> 
+</body>
+</html>

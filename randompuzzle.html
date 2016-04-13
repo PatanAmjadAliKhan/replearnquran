@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" ng-app="myApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./node_modules/ng-audio/dist/ng-audio.min.js"></script>
+        <title></title>
+        <style type="text/css">
+                body{background: #ffeca9;}
+                p{
+               color: ##212F11; 
+               font: bold 52px Helvetica, Arial, Sans-Serif;
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907;
+               -webkit-transition: all 0.12s ease-out;
+               -moz-transition:    all 0.12s ease-out;
+               -ms-transition:     all 0.12s ease-out;
+               -o-transition:      all 0.12s ease-out;
+            }
+            p:hover {
+               position: relative; 
+               top: -3px; 
+               left: -3px; 
+               text-shadow: 1px 1px ##D6A907, 
+                            2px 2px ##D6A907, 
+                            3px 3px ##D6A907, 
+                            4px 4px ##D6A907, 
+                            5px 5px ##D6A907, 
+                            6px 6px ##D6A907;
+            }
+
+            .btn-block { padding: 0% 0%;}
+            .tc{      font-size:100px;
+                     
+                      }
+	  </style>
+    <script>
+    var glo={};
+    </script>
+ <body >
+    <div ng-controller="letterCtrl">
+    <div id="box1" ng-controller="TestCtrl" ng-modal="tuple">
+        <div class="row" >
+             <div class="col-md-6">
+                 <br><br><br><br><br><br>
+             </div>
+             <div class="col-md-6">  
+                 <label>Select Lesson</label>
+                <select id="Books"onchange="bookchange()">
+                  <option value="Book00" selected>Book0</option>
+                  <option value="Book01">Book1</option>
+                  <option value="Book02">Book2</option>
+                  <option value="Book03">Book3</option>
+                  <option value="Book04">Book4</option>
+                  <option value="Book05">Book5</option>
+                  <option value="Book06">Book6</option>
+                </select>
+               <label>Select Lesson</label>
+                <select id="lessons"onchange="lessonchange()">
+                  <option value="lesson01" selected>lesson1</option>
+                  <option value="lesson02">lesson2</option>
+                  <option value="lesson03">lesson3</option>
+                  <option value="lesson04">lesson4</option>
+                  <option value="lesson05">lesson5</option>
+                  <option value="lesson06">lesson6</option>
+                  <option value="lesson07">lesson7</option>
+                  <option value="lesson08">lesson8</option>
+                  <option value="lesson09">lesson9</option>
+                  <option value="lesson10">lesson10</option>
+                  <option value="lesson11">lesson11</option>
+                  <option value="lesson12">lesson12</option>
+                  <option value="lesson13">lesson13</option>
+                  <option value="lesson14">lesson14</option>
+                  <option value="lesson15">lesson15</option>
+                  <option value="lesson16">lesson16</option>
+                  <option value="lesson17">lesson17</option>
+                  <option value="lesson18">lesson18</option>
+                  <option value="lesson19">lesson19</option>
+                  <option value="lesson20">lesson20</option>
+                  <option value="lesson21">lesson21</option>
+                  <option value="lesson22">lesson22</option>
+                  <option value="lesson23">lesson23</option>
+                  <option value="lesson24">lesson24</option>
+                  <option value="lesson25">lesson25</option>
+                  <option value="lesson26">lesson26</option>
+                  <option value="lesson27">lesson27</option>
+                  <option value="lesson28">lesson28</option>
+                  <option value="lesson29">lesson29</option>
+                </select> 
+                </div>
+        </div>
+        <div class="row" >
+             <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <div class="col-xs-3">
+                <button id="letter1"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[0]}}</p></button>
+                </div>
+                <div class="col-xs-3">
+                <button id="letter2"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[1]}}</p></button>
+                </div>
+                <div class="col-xs-3">
+                <button id="letter3"type="button" class="btn  btn-success btn-lg btn-block" ng-click="awaaz($index);$event.stopPropagation()"><p class="tc">{{tuple[2]}}</p></button>
+                <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+            </div>
+    <div class="row" >
+             <div class="col-md-6">
+                 <br><br><br><br><br><br>
+                </div>
+             <div class="col-md-6">
+                     <button class="btn btn-primary btn-lg"onclick="call()"id="btn_click">Nextword</button>
+            </div>
+        </div>
+     </div>   
+        </div>
+      <script>
+     function bookchange(){
+             var myselect = document.getElementById("Books");
+             var book = myselect.options[myselect.selectedIndex].value;
+             glo.bookNum=Number(book.substring(4,6));
+         lessonchange()
+    }
+     function lessonchange(){
+         if(glo.bookNum==undefined)
+             glo.bookNum=0;
+         var myselect = document.getElementById("lessons");
+         var lesson = myselect.options[myselect.selectedIndex].value;
+         var current=[],last3=[], glast3=[];
+         var scope =angular.element(document.getElementById('box1')).scope();
+         var lessonNum=Number(lesson.substring(6,8));
+          current.push(scope.letters[glo.bookNum][lessonNum]);
+          glo.current=current[0];
+         for(var i=lessonNum,k=lessonNum;((k-3)<=i)&&(i>-1);i--){
+            last3.push(scope.letters[glo.bookNum][i]);}
+         for(var i=(lessonNum-3);(lessonNum>-1)&&(i>-1);i--){
+            glast3.push(scope.letters[glo.bookNum][i]);}   
+        glo.last3=last3;
+        glo.glast3=glast3;
+     }
+   function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+     
+var app = angular.module('myApp', []);
+app.controller('letterCtrl', function($scope,$rootScope) {
+   
+$rootScope.letters=[
+['ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','و','ه','ء','ي'],
+
+['أَ','بَ','تَ','ثَ','جَ','حَ','خَ','دَ','ذَ','رَ','زَ','سَ','شَ','صَ','ضَ','طَ','ظَ','عَ','غَ','فَ','قَ','كَ','لَ','مَ','نَ','وَ','هَ','ءَ','يَ'],
+
+['إِ','بِ','تِ','ثِ','جِ','حِ','خِ','دِ','ذِ','رِ','زِ','سِ','شِ','صِ','ضِ','طِ','ظِ','عِ','غِ','فِ','قِ','كِ','لِ','مِ','نِ','وِ','هِ','ءِ','يِ'],
+
+['أُ','بُ','تُ','ثُ','جُ','حُ','خُ','دُ','ذُ','رُ','زُ','سُ','شُ','صُ','ضُ','طُ','ظُ','عُ','غُ','فُ','قُ','كُ','لُ','مُ','نُ','وُ','هُ','ءُ','يُ'],
+  
+['اً','بً','تً','ثً','جً','حً','خً','دً','ذً','رً','زً','سً','شً','صً','ضً','طً','ظً','عً','غً','فً','قً','كً','لً','مً','نً','وً','هً','ءً','أً'],
+
+['إٍ','بٍ','تٍ','ثٍ','جٍ','حٍ','خٍ','دٍ','ذٍ','رٍ','زٍ','سٍ','شٍ','صٍ','ضٍ','طٍ','ظٍ','عٍ','غٍ','فٍ','قٍ','كٍ','لٍ','مٍ','نٍ','وٍ','هٍ','ءٍ','يٍ'],
+
+['أٌ','بٌ','تٌ','ثٌ','جٌ','حٌ','خٌ','دٌ','ذٌ','رٌ','زٌ','سٌ','شٌ','صٌ','ضٌ','طٌ','ظٌ','عٌ','غٌ','فٌ','قٌ','كٌ','لٌ','مٌ','نٌ','وٌ','هٌ','ءٌ','يٌ']
+];
+glo.bookNum=0;
+$scope.letters=$rootScope.letters;
+$scope.columnBreak = 4; //Max number of colunms
+$scope.awaaz = function(taskId){
+    alert("Task Id is "+taskId);
+     if(taskId==0){
+         var filename='./arabicLetters/'+taskId.toString()+'.mp3';
+         var audio = new Audio(filename);audio.play();
+     }
+    }
+    });
+app.controller('TestCtrl', function($scope,$rootScope) {
+    glo.current=[];
+    glo.last3=[];
+    glo.glast3=[];
+   $scope.letters=$rootScope.letters;
+    $scope.returntuple= function() {
+        var tuple=[];
+        var i;
+        for (var z=0;z<3;z++){
+          var  sum=0, r=Math.random();
+          var spec={0:0.44, 1:0.35, 2:0.21}
+          for (i in spec) {
+            sum += spec[i];
+            if (r <= sum)  break;
+          }
+            if(z==0)tuple.push(glo.current);
+            if(z==1)tuple.push(glo.last3[Math.floor((Math.random() * (glo.last3.length)) )]); 
+            if(z==2)tuple.push(glo.glast3[Math.floor((Math.random() * (glo.glast3.length)) )]);
+        }   
+        
+        for(var k=0;k<3;k++)
+        if(tuple[k]=='')
+        tuple[k]=glo.current;
+       shuffle(tuple)
+        console.log(tuple)
+        $scope.tuple = tuple;
+    }
+     lessonchange();
+    bookchange();
+});
+ function call() {
+    var $scope =angular.element(document.getElementById('box1')).scope();
+    if (!$scope.$$phase) {
+        $scope.$apply()
+    }
+   $scope.returntuple();
+   $scope.$digest();
+} 
+</script>
+    
+</body>
+</html>
